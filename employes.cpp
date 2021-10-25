@@ -20,3 +20,4 @@ void Employes::setnom(QString nom){this->nom=nom;}
 
 void Employes::setprenom(QString prenom){this->prenom=prenom;}
 
+.....
