@@ -1,5 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "ui_employ.h"
+
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -13,8 +16,3 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
-void MainWindow::on_groupBox_clicked()
-{
-    int
-}
