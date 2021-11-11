@@ -19,6 +19,7 @@ public:
     QString getadress();
 
 
+
     void setCIN(int);
     void setnom(QString);
     void setprenom(QString);
