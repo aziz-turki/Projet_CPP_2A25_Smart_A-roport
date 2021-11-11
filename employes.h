@@ -3,6 +3,7 @@
 #include <QString>
 #include <QSqlQueryModel>
 
+//CRUDS
 class Employe
 
 {
