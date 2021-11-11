@@ -28,6 +28,7 @@ HEADERS += \
 
 FORMS += \
     employ.ui \
+    employ.ui \
     mainwindow.ui
 
 # Default rules for deployment.

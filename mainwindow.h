@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "employes.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -16,9 +17,23 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_groupBox_clicked();
+
+    void on_pushButton_Supprimer_clicked();
+
+    void on_pushButton_Ajouter_clicked();
+
+    void on_pushButton_Afficher_clicked();
+
+    void on_pushButton_MIseAJour_clicked();
+
+    void on_pushButton_Recherche_clicked();
+
+    void on_pushButton_Trier_clicked();
+
+    void on_pushButton_PDF_clicked();
 
 private:
     Ui::MainWindow *ui;
+    Employe E;
 };
 #endif // MAINWINDOW_H
