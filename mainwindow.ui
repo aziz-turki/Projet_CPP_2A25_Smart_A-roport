@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>747</width>
-    <height>584</height>
+    <width>758</width>
+    <height>581</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -288,22 +288,6 @@
          <string>Email</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_Trier">
-        <property name="geometry">
-         <rect>
-          <x>30</x>
-          <y>240</y>
-          <width>121</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="cursor">
-         <cursorShape>PointingHandCursor</cursorShape>
-        </property>
-        <property name="text">
-         <string>Trier</string>
-        </property>
-       </widget>
        <widget class="QPushButton" name="pushButton_Recherche">
         <property name="geometry">
          <rect>
@@ -320,7 +304,7 @@
          <string>Recherche</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_Email">
+       <widget class="QPushButton" name="pushButton_email">
         <property name="geometry">
          <rect>
           <x>330</x>
@@ -333,7 +317,7 @@
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="text">
-         <string>Email</string>
+         <string>mailing</string>
         </property>
        </widget>
        <widget class="QPushButton" name="pushButton_PDF">
@@ -380,16 +364,6 @@
          <rect>
           <x>90</x>
           <y>120</y>
-          <width>101</width>
-          <height>20</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lineEdit_Date_Naissance">
-        <property name="geometry">
-         <rect>
-          <x>310</x>
-          <y>40</y>
           <width>101</width>
           <height>20</height>
          </rect>
@@ -498,6 +472,46 @@
          <string>Reset</string>
         </property>
        </widget>
+       <widget class="QDateEdit" name="dateEdit_naissance">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>40</y>
+          <width>101</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="comboBox_tri">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>240</y>
+          <width>121</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>          Trier</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Tri par CIN</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Tri par Nom</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Tri par Date</string>
+         </property>
+        </item>
+       </widget>
        <zorder>label_photo</zorder>
        <zorder>label_CIN</zorder>
        <zorder>label_Nom</zorder>
@@ -511,20 +525,20 @@
        <zorder>label_Num_Tel</zorder>
        <zorder>label_Adress</zorder>
        <zorder>label_Email</zorder>
-       <zorder>pushButton_Trier</zorder>
        <zorder>pushButton_Recherche</zorder>
-       <zorder>pushButton_Email</zorder>
+       <zorder>pushButton_email</zorder>
        <zorder>pushButton_PDF</zorder>
        <zorder>lineEdit_CIN</zorder>
        <zorder>lineEdit_Nom</zorder>
        <zorder>lineEdit_Prenom</zorder>
-       <zorder>lineEdit_Date_Naissance</zorder>
        <zorder>lineEdit_Num_Tel</zorder>
        <zorder>table_employe</zorder>
        <zorder>lineEdit_Email</zorder>
        <zorder>lineEdit_Adress</zorder>
        <zorder>comboBox_Sexe</zorder>
        <zorder>pushButton_Reset</zorder>
+       <zorder>dateEdit_naissance</zorder>
+       <zorder>comboBox_tri</zorder>
       </widget>
       <widget class="QWidget" name="Login">
        <attribute name="title">
@@ -540,7 +554,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>747</width>
+     <width>758</width>
      <height>22</height>
     </rect>
    </property>

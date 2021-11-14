@@ -28,7 +28,7 @@ private slots:
 
     void on_pushButton_Recherche_clicked();
 
-    void on_pushButton_Trier_clicked();
+    //void on_pushButton_Trier_clicked();
 
     void on_pushButton_PDF_clicked();
 
@@ -37,6 +37,8 @@ private slots:
     void on_pushButton_Reset_clicked();
 
     void on_pushButton_login_clicked();
+
+    void on_comboBox_tri_activated();
 
 private:
     Ui::MainWindow *ui;

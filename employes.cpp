@@ -5,13 +5,14 @@
 #include <QFileDialog>
 #include <QtPrintSupport/QPrinter>
 #include <QTextDocument>
-#include <QRegularExpression>
+
+
 Employe::Employe()
 {
-CIN=0; nom=" "; prenom=" "; sexe=" "; date_naissance=" "; num_tel=0; email=" "; adress= " ";
+CIN=0; nom=" "; prenom=" "; sexe=" "; num_tel=0; email=" "; adress= " ";
 }
 
-Employe::Employe(int CIN,QString nom,QString prenom,QString sexe,QString date_naissance,int num_tel,QString email, QString adress)
+Employe::Employe(int CIN,QString nom,QString prenom,QString sexe,QDate date_naissance,int num_tel,QString email, QString adress)
 {
     this->CIN=CIN;
     this->nom=nom;
@@ -28,7 +29,7 @@ int Employe::getCIN(){return CIN;}
 QString Employe::getnom(){return nom;}
 QString Employe::getprenom(){return prenom;}
 QString Employe::getsexe(){return sexe;}
-QString Employe::getdate_naissance(){return date_naissance;}
+QDate Employe::getdate_naissance(){return date_naissance;}
 int Employe::getnum_tel(){return num_tel;}
 QString Employe::getemail(){return email;}
 QString Employe::getadress(){return adress;}
@@ -38,7 +39,7 @@ void Employe::setCIN(int CIN){this->CIN=CIN;}
 void Employe::setnom(QString nom){this->nom=nom;}
 void Employe::setprenom(QString prenom){this->prenom=prenom;}
 void Employe::setsexe(QString sexe){this->sexe=sexe;}
-void Employe::setdate_naissance(QString date_naissance){this->date_naissance=date_naissance;}
+void Employe::setdate_naissance(QDate date_naissance){this->date_naissance=date_naissance;}
 void Employe::setnum_tel(int num_tel){this->num_tel=num_tel;}
 void Employe::setemail(QString email){this->email=email;}
 void Employe::setadress(QString adress){this->adress=adress;}
@@ -123,7 +124,7 @@ bool Employe::supprimerTout()
 
 
 
-bool Employe::modifierEmploye(int CIN,QString nom,QString prenom,QString sexe,QString date_naissance,int num_tel,QString email,QString adress)
+bool Employe::modifierEmploye(int CIN,QString nom,QString prenom,QString sexe,QDate date_naissance,int num_tel,QString email,QString adress)
 {
 
     QSqlQuery query;
@@ -175,8 +176,8 @@ return model;
 /***********************************************************************************************/
 
 
-
-QSqlQueryModel * Employe::trierEmploye()
+//Trie Par CIN
+QSqlQueryModel * Employe::trierEmployeParCIN()
 {
 
     QSqlQuery * q = new  QSqlQuery ();
@@ -187,6 +188,30 @@ QSqlQueryModel * Employe::trierEmploye()
            return model;
 }
 
+//Trie Par Nom
+QSqlQueryModel * Employe::trierEmployeParNom()
+{
+
+    QSqlQuery * q = new  QSqlQuery ();
+           QSqlQueryModel * model = new  QSqlQueryModel ();
+           q->prepare("SELECT * FROM EMPLOYE order by nom ASC");
+           q->exec();
+           model->setQuery(*q);
+           return model;
+}
+
+
+//Trie Par Prenom
+QSqlQueryModel * Employe::trierEmployeParDate()
+{
+
+    QSqlQuery * q = new  QSqlQuery ();
+           QSqlQueryModel * model = new  QSqlQueryModel ();
+           q->prepare("SELECT * FROM EMPLOYE order by date_naissance ASC");
+           q->exec();
+           model->setQuery(*q);
+           return model;
+}
 
 
 
@@ -225,18 +250,9 @@ void Employe::CREATION_PDF_Employe()
 
 */
 
-/***********************************************************************************************/
-
-void Mailing_Employe()
-{
-
-
-
-}
-
-
-
-
 
 
 /***********************************************************************************************/
+
+
+

@@ -12,20 +12,20 @@
 
 
 
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->stackedWidget->setCurrentIndex(0);
+    //ui->stackedWidget->setCurrentIndex(0);
     QPixmap pic("C:/Users/21698/Desktop/photo_Qt");
     ui->label_photo->setPixmap(pic);
-    ui->lineEdit_CIN->setValidator(new QIntValidator(100, 99999999, this));
+    ui->lineEdit_CIN->setValidator(new QIntValidator(0, 99999999, this));
     ui->lineEdit_Num_Tel->setValidator(new QIntValidator(0, 99999999, this));
     ui->lineEdit_Nom->setMaxLength(8);
     ui->lineEdit_Prenom->setMaxLength(8);
-    ui->lineEdit_Date_Naissance->setMaxLength(8);
-    ui->lineEdit_Email->setMaxLength(8);
+    //ui->lineEdit_Email->setInputMask("NNNNNNNN.NNNNNNNN@AAAAAA.AAA");
     ui->lineEdit_Adress->setMaxLength(8);
  }
 
@@ -48,7 +48,7 @@ void MainWindow::on_pushButton_Ajouter_clicked()
     QString nom=ui->lineEdit_Nom->text();
     QString prenom=ui->lineEdit_Prenom->text();
     QString sexe=ui->comboBox_Sexe->currentText();
-    QString date_naissance=ui->lineEdit_Date_Naissance->text();
+    QDate date_naissance=ui->dateEdit_naissance->date();
     int num_tel=ui->lineEdit_Num_Tel->text().toInt();
     QString email=ui->lineEdit_Email->text();
     QString adress=ui->lineEdit_Adress->text();
@@ -68,8 +68,8 @@ void MainWindow::on_pushButton_Ajouter_clicked()
              ui->lineEdit_CIN->clear();
              ui->lineEdit_Nom->clear();
              ui->lineEdit_Prenom->clear();
-             ui->comboBox_Sexe->clear();
-             ui->lineEdit_Date_Naissance->clear();
+             ui->comboBox_Sexe->setCurrentIndex(0);
+             ui->dateEdit_naissance->clear();
              ui->lineEdit_Num_Tel->clear();
              ui->lineEdit_Email->clear();
              ui->lineEdit_Adress->clear();
@@ -118,8 +118,8 @@ void MainWindow::on_pushButton_Supprimer_clicked()
     ui->lineEdit_CIN->clear();
     ui->lineEdit_Nom->clear();
     ui->lineEdit_Prenom->clear();
-    ui->comboBox_Sexe->clear();
-    ui->lineEdit_Date_Naissance->clear();
+    ui->comboBox_Sexe->setCurrentIndex(0);
+    ui->dateEdit_naissance->clear();
     ui->lineEdit_Num_Tel->clear();
     ui->lineEdit_Email->clear();
     ui->lineEdit_Adress->clear();
@@ -163,7 +163,7 @@ void MainWindow::on_pushButton_MIseAJour_clicked()
     QString nom=ui->lineEdit_Nom->text();
     QString prenom=ui->lineEdit_Prenom->text();
     QString sexe=ui->comboBox_Sexe->currentText();
-    QString date_naissance=ui->lineEdit_Date_Naissance->text();
+    QDate date_naissance=ui->dateEdit_naissance->date();
     int num_tel=ui->lineEdit_Num_Tel->text().toInt();
     QString email=ui->lineEdit_Email->text();
     QString adress=ui->lineEdit_Adress->text();
@@ -174,7 +174,7 @@ void MainWindow::on_pushButton_MIseAJour_clicked()
 
     QMessageBox msgBox;
 
-    if ((ui->lineEdit_CIN->text()==0),(ui->lineEdit_Nom->text()==""),(ui->lineEdit_Prenom->text()==""),(ui->comboBox_Sexe->currentText()==""),(ui->lineEdit_Date_Naissance->text()==""),(ui->lineEdit_Num_Tel->text()==0),(ui->lineEdit_Email->text()==""),(ui->lineEdit_Adress->text()==""))
+    if ((ui->lineEdit_CIN->text()==0),(ui->lineEdit_Nom->text()==""),(ui->lineEdit_Prenom->text()==""),(ui->comboBox_Sexe->currentText()=="")/*,(ui->dateEdit_naissance->date()==0)*/,(ui->lineEdit_Num_Tel->text()==0),(ui->lineEdit_Email->text()==""),(ui->lineEdit_Adress->text()==""))
     {
         QMessageBox::critical(this, QObject::tr("Modification Errer"),
                            QObject::tr("Echec de Modification!!!\n""Veuillez remplir tous le champs"), QMessageBox::Cancel);
@@ -190,8 +190,8 @@ void MainWindow::on_pushButton_MIseAJour_clicked()
     ui->lineEdit_CIN->clear();
     ui->lineEdit_Nom->clear();
     ui->lineEdit_Prenom->clear();
-    ui->comboBox_Sexe->clear();
-    ui->lineEdit_Date_Naissance->clear();
+    ui->comboBox_Sexe->setCurrentIndex(0);
+    ui->dateEdit_naissance->clear();
     ui->lineEdit_Num_Tel->clear();
     ui->lineEdit_Email->clear();
     ui->lineEdit_Adress->clear();
@@ -216,8 +216,8 @@ ui->table_employe->setModel(E.RechercheEmploye(E.getCIN(),E.getnom(),E.getprenom
 ui->lineEdit_CIN->clear();
 ui->lineEdit_Nom->clear();
 ui->lineEdit_Prenom->clear();
-ui->comboBox_Sexe->clear();
-ui->lineEdit_Date_Naissance->clear();
+ui->comboBox_Sexe->setCurrentIndex(0);
+ui->dateEdit_naissance->clear();
 ui->lineEdit_Num_Tel->clear();
 ui->lineEdit_Email->clear();
 ui->lineEdit_Adress->clear();
@@ -225,16 +225,22 @@ ui->lineEdit_Adress->clear();
 
 
 
-/**********************************************************************************************************************/
+/****************************************************************************************/
 
 
 
-void MainWindow::on_pushButton_Trier_clicked()
+
+void MainWindow::on_comboBox_tri_activated()
 {
-    if(E.trierEmploye())
+    if(ui->comboBox_tri->currentText()=="Tri par CIN")
     {
-        ui->table_employe->setModel(E.trierEmploye());
-
+        ui->table_employe->setModel(E.trierEmployeParCIN());
+    }else if(ui->comboBox_tri->currentText()=="Tri par Nom")
+    {
+        ui->table_employe->setModel(E.trierEmployeParNom());
+    }else
+    {
+        ui->table_employe->setModel(E.trierEmployeParDate());
     }
 }
 
@@ -299,7 +305,7 @@ void MainWindow::on_pushButton_login_clicked()
     QString username = ui->lineEdit_username->text();
            QString password = ui->lineEdit_password->text();
 
-           if (username == "aziz" && password == "esprit123") {
+           if (username == "admin" && password == "admin") {
                QMessageBox::information(this, "Login", "Username and password are correct");
             ui->stackedWidget->setCurrentIndex(1);
 
@@ -310,5 +316,9 @@ void MainWindow::on_pushButton_login_clicked()
            ui->lineEdit_username->clear();
            ui->lineEdit_password->clear();
 }
+
+
+
+/************************************************************************************************************************/
 
 
