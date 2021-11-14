@@ -12,6 +12,7 @@ Employe::Employe()
 CIN=0; nom=" "; prenom=" "; sexe=" "; num_tel=0; email=" "; adress= " ";
 }
 
+
 Employe::Employe(int CIN,QString nom,QString prenom,QString sexe,QDate date_naissance,int num_tel,QString email, QString adress)
 {
     this->CIN=CIN;
