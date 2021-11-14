@@ -7,6 +7,8 @@
 #include <QTextDocument>
 
 
+
+
 Employe::Employe()
 {
 CIN=0; nom=" "; prenom=" "; sexe=" "; num_tel=0; email=" "; adress= " ";
