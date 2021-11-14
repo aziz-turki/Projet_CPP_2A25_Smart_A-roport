@@ -5,7 +5,7 @@
 #include <QFileDialog>
 #include <QtPrintSupport/QPrinter>
 #include <QTextDocument>
-
+#include <QRegularExpression>
 Employe::Employe()
 {
 CIN=0; nom=" "; prenom=" "; sexe=" "; date_naissance=" "; num_tel=0; email=" "; adress= " ";
@@ -110,6 +110,19 @@ bool Employe::supprimerEmploye(int CIN)
 
 
 
+bool Employe::supprimerTout()
+{
+    QSqlQuery query;
+    query.prepare("delete from EMPLOYE ");
+    return query.exec();
+}
+
+
+
+/***********************************************************************************************/
+
+
+
 bool Employe::modifierEmploye(int CIN,QString nom,QString prenom,QString sexe,QString date_naissance,int num_tel,QString email,QString adress)
 {
 
@@ -134,22 +147,25 @@ bool Employe::modifierEmploye(int CIN,QString nom,QString prenom,QString sexe,QS
 
 
 
-QSqlQueryModel* Employe::RechercheEmploye(int CIN)
+QSqlQueryModel* Employe::RechercheEmploye(int CIN,QString nom,QString prenom)
  {
      QSqlQueryModel * model= new QSqlQueryModel();
      QSqlQuery query;
-     query.prepare("select * from EMPLOYE where CIN like :CIN");
+     query.prepare("select * from EMPLOYE where CIN like :CIN OR nom like :NOM OR prenom like :PRENOM");
      query.bindValue(":CIN",CIN);
+     query.bindValue(":NOM",nom);
+     query.bindValue(":PRENOM",prenom);
      query.exec();
      model->setQuery(query);
      model->setHeaderData(0, Qt::Horizontal, QObject::tr("CIN"));
-     model->setHeaderData(0, Qt::Horizontal, QObject::tr("nom"));
-     model->setHeaderData(0, Qt::Horizontal, QObject::tr("prenom"));
-     model->setHeaderData(0, Qt::Horizontal, QObject::tr("sexe"));
-     model->setHeaderData(0, Qt::Horizontal, QObject::tr("date_naissance"));
-     model->setHeaderData(0, Qt::Horizontal, QObject::tr("num_tel"));
-     model->setHeaderData(0, Qt::Horizontal, QObject::tr("email"));
-     model->setHeaderData(0, Qt::Horizontal, QObject::tr("adress"));
+     model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+     model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
+     model->setHeaderData(3, Qt::Horizontal, QObject::tr("sexe"));
+     model->setHeaderData(4, Qt::Horizontal, QObject::tr("date_naissance"));
+     model->setHeaderData(5, Qt::Horizontal, QObject::tr("num_tel"));
+     model->setHeaderData(6, Qt::Horizontal, QObject::tr("email"));
+     model->setHeaderData(7, Qt::Horizontal, QObject::tr("adress"));
+
 
 
 return model;
@@ -157,6 +173,7 @@ return model;
 
 
 /***********************************************************************************************/
+
 
 
 QSqlQueryModel * Employe::trierEmploye()
@@ -176,11 +193,11 @@ QSqlQueryModel * Employe::trierEmploye()
 /***********************************************************************************************/
 
 
-
+/*
 void Employe::CREATION_PDF_Employe()
 {
 
-    /*QString fileName = QFileDialog::getSaveFileName((QWidget* )0, "Export PDF", QString(), "*.pdf");
+    QString fileName = QFileDialog::getSaveFileName((QWidget* )0, "Export PDF", QString(), "*.pdf");
     if (QFileInfo(fileName).suffix().isEmpty()) { fileName.append(".pdf"); }
 
     QPrinter printer(QPrinter::PrinterResolution);
@@ -192,7 +209,7 @@ void Employe::CREATION_PDF_Employe()
     QSqlQuery q;
     q.prepare("SELECT * FROM EMPLOYE ");
     q.exec();
-    QString pdf="<br> <h1  style='color:blue'>LISTE EMPLOYE DE DECES  <br></h1>\n <br> <table>  <tr>  <th> CIN </th> <th> NOM </th> <th> PRENOM </th> <th> SEXE </th> <th> DATE_NAISSANCE </th> <th> NUM_TEL </th> <th> EMAIL </th> <th> ADRESS </th> </tr>" ;
+    QString pdf="<br> <h1  style='color:blue'>LISTE EMPLOYE DE DECES <br></h1>\n <br> <table>  <tr>  <th> CIN </th> <th> NOM </th> <th> PRENOM </th> <th> SEXE </th> <th> DATE_NAISSANCE </th> <th> NUM_TEL </th> <th> EMAIL </th> <th> ADRESS </th> </tr>" ;
 
 
     while ( q.next()) {
@@ -202,9 +219,23 @@ void Employe::CREATION_PDF_Employe()
     }
     doc.setHtml(pdf);
     doc.setPageSize(printer.pageRect().size()); // This is necessary if you want to hide the page number
-    doc.print(&printer);*/
+    doc.print(&printer);
 
 }
+
+*/
+
+/***********************************************************************************************/
+
+void Mailing_Employe()
+{
+
+
+
+}
+
+
+
 
 
 

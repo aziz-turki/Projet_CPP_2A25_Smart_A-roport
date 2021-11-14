@@ -34,8 +34,9 @@ public:
     bool ajouterEmploye();
     QSqlQueryModel* afficherEmploye();
     bool supprimerEmploye(int);
+    bool supprimerTout();
     bool modifierEmploye(int,QString,QString,QString,QString,int,QString,QString);
-    QSqlQueryModel* RechercheEmploye(int);
+    QSqlQueryModel* RechercheEmploye(int,QString,QString);
     QSqlQueryModel * trierEmploye();
     void CREATION_PDF_Employe();
 

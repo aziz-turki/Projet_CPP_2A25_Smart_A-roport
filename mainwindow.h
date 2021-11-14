@@ -18,9 +18,9 @@ public:
 
 private slots:
 
-    void on_pushButton_Supprimer_clicked();
-
     void on_pushButton_Ajouter_clicked();
+
+    void on_pushButton_Supprimer_clicked();
 
     void on_pushButton_Afficher_clicked();
 
@@ -31,6 +31,12 @@ private slots:
     void on_pushButton_Trier_clicked();
 
     void on_pushButton_PDF_clicked();
+
+    //QModelIndex on_table_employe_activated(QModelIndex &index);
+
+    void on_pushButton_Reset_clicked();
+
+    void on_pushButton_login_clicked();
 
 private:
     Ui::MainWindow *ui;
