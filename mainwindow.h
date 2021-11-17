@@ -38,10 +38,7 @@ private slots:
 
     void on_comboBox_tri_activated();
 
-    //**********************************
-    void browse();
-    void sendMail();
-    void mailSent(QString status);
+    void on_table_employe_clicked(const QModelIndex &index);
 
 private:
     Ui::MainWindow *ui;

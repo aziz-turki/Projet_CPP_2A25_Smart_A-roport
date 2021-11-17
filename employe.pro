@@ -21,14 +21,12 @@ SOURCES += \
     connexion.cpp \
     employes.cpp \
     main.cpp \
-    mainwindow.cpp \
-    smtp.cpp
+    mainwindow.cpp
 
 HEADERS += \
     connexion.h \
     employes.h \
-    mainwindow.h \
-    smtp.h
+    mainwindow.h
 
 FORMS += \
     employ.ui \

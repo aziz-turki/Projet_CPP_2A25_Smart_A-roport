@@ -27,7 +27,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->lineEdit_Num_Tel->setValidator(new QIntValidator(0, 99999999, this));
     ui->lineEdit_Nom->setMaxLength(8);
     ui->lineEdit_Prenom->setMaxLength(8);
-    ui->lineEdit_Email->setInputMask("NNNNNNNN.NNNNNNNN@AAAAAA.AAA");
+    //ui->lineEdit_Email->setInputMask("NNNNNNNN.NNNNNNNN@AAAAAA.AAA");
     ui->lineEdit_Adress->setMaxLength(8);
     connect(ui->sendbtn,SIGNAL(clicked()),this,SLOT(sendMail()));
  }
@@ -86,7 +86,6 @@ void MainWindow::on_pushButton_Ajouter_clicked()
 void MainWindow::on_pushButton_Afficher_clicked()
 {
     ui->table_employe->setModel(E.afficherEmploye());
-
 }
 
 
@@ -328,40 +327,16 @@ void MainWindow::on_pushButton_login_clicked()
 
 
 
-/************************************************************************************************************************/
-
-void MainWindow::browse()
+void MainWindow::on_table_employe_clicked(const QModelIndex &index)
 {
-    files.clear();
+    ui->lineEdit_CIN->setText(ui->table_employe->model()->data(ui->table_employe->model()->index(index.row(),0)).toString());
+    ui->lineEdit_Nom->setText(ui->table_employe->model()->data(ui->table_employe->model()->index(index.row(),1)).toString());
+    ui->lineEdit_Prenom->setText(ui->table_employe->model()->data(ui->table_employe->model()->index(index.row(),2)).toString());
+    ui->comboBox_Sexe->setCurrentText(ui->table_employe->model()->data(ui->table_employe->model()->index(index.row(),3)).toString());
+//    ui->dateEdit_naissance->date(ui->table_employe->model()->data(ui->table_employe->model()->index(index.row(),4)).toString());
+    ui->lineEdit_Num_Tel->setText(ui->table_employe->model()->data(ui->table_employe->model()->index(index.row(),5)).toString());
+    ui->lineEdit_Email->setText(ui->table_employe->model()->data(ui->table_employe->model()->index(index.row(),6)).toString());
+    ui->lineEdit_Adress->setText(ui->table_employe->model()->data(ui->table_employe->model()->index(index.row(),7)).toString());
 
-    QFileDialog dialog(this);
-    dialog.setDirectory(QDir::homePath());
-    dialog.setFileMode(QFileDialog::ExistingFiles);
 
-    if (dialog.exec())
-        files = dialog.selectedFiles();
-
-    QString fileListString;
-    foreach(QString file, files)
-        fileListString.append( "\"" + QFileInfo(file).fileName() + "\" " );
-
-    ui->file->setText( fileListString );
-
-}
-
-void MainWindow::sendMail()
-{
-    Smtp * smtp = new Smtp(ui->uname->text(), ui->paswd->text(), ui->server->text(), ui->port->text().toInt());
-    connect(smtp, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
-
-    if( !files.isEmpty() )
-        smtp->sendMail(ui->uname->text(), ui->rcpt->text() , ui->subject->currentText(),ui->msg->toPlainText(), files );
-    else
-        smtp->sendMail(ui->uname->text(), ui->rcpt->text() , ui->subject->currentText(),ui->msg->toPlainText());
-}
-
-void MainWindow::mailSent(QString status)
-{
-    if(status == "Message sent")
-        QMessageBox::warning( 0, tr( "Qt Simple SMTP client" ), tr( "Message sent!\n\n" ) );
 }

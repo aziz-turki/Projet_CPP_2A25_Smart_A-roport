@@ -132,7 +132,7 @@
        <string notr="true">font: 8pt &quot;Times New Roman&quot;;</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="GestiondesEmployes">
        <attribute name="icon">
@@ -536,6 +536,19 @@
          </rect>
         </property>
        </widget>
+       <widget class="QLabel" name="label_5">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>220</y>
+          <width>71</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Recherche :</string>
+        </property>
+       </widget>
        <zorder>label_photo</zorder>
        <zorder>label_CIN</zorder>
        <zorder>label_Nom</zorder>
@@ -563,10 +576,11 @@
        <zorder>dateEdit_naissance</zorder>
        <zorder>comboBox_tri</zorder>
        <zorder>lineEdit_recherche</zorder>
+       <zorder>label_5</zorder>
       </widget>
       <widget class="QWidget" name="Login">
        <attribute name="title">
-        <string>Tab 2</string>
+        <string>email</string>
        </attribute>
        <widget class="QLineEdit" name="server">
         <property name="geometry">
@@ -845,6 +859,42 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>lineEdit_username</tabstop>
+  <tabstop>lineEdit_password</tabstop>
+  <tabstop>pushButton_login</tabstop>
+  <tabstop>lineEdit_CIN</tabstop>
+  <tabstop>lineEdit_Nom</tabstop>
+  <tabstop>lineEdit_Prenom</tabstop>
+  <tabstop>comboBox_Sexe</tabstop>
+  <tabstop>dateEdit_naissance</tabstop>
+  <tabstop>lineEdit_Num_Tel</tabstop>
+  <tabstop>lineEdit_Email</tabstop>
+  <tabstop>lineEdit_Adress</tabstop>
+  <tabstop>pushButton_Ajouter</tabstop>
+  <tabstop>pushButton_MIseAJour</tabstop>
+  <tabstop>pushButton_Afficher</tabstop>
+  <tabstop>pushButton_Supprimer</tabstop>
+  <tabstop>pushButton_Reset</tabstop>
+  <tabstop>lineEdit_recherche</tabstop>
+  <tabstop>comboBox_tri</tabstop>
+  <tabstop>pushButton_email</tabstop>
+  <tabstop>pushButton_PDF</tabstop>
+  <tabstop>table_employe</tabstop>
+  <tabstop>server</tabstop>
+  <tabstop>port</tabstop>
+  <tabstop>uname</tabstop>
+  <tabstop>paswd</tabstop>
+  <tabstop>rcpt</tabstop>
+  <tabstop>subject</tabstop>
+  <tabstop>file</tabstop>
+  <tabstop>msg</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>pushButton_2</tabstop>
+  <tabstop>sendbtn</tabstop>
+  <tabstop>pushButton_4</tabstop>
+  <tabstop>tabWidget1</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
