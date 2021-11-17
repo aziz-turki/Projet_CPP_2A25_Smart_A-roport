@@ -151,16 +151,10 @@ bool Employe::modifierEmploye(int CIN,QString nom,QString prenom,QString sexe,QD
 
 
 
-QSqlQueryModel* Employe::RechercheEmploye(int CIN,QString nom,QString prenom)
+QSqlQueryModel* Employe::RechercheEmploye(QString recherche)
  {
      QSqlQueryModel * model= new QSqlQueryModel();
-     QSqlQuery query;
-     query.prepare("select * from EMPLOYE where CIN like :CIN OR nom like :NOM OR prenom like :PRENOM");
-     query.bindValue(":CIN",CIN);
-     query.bindValue(":NOM",nom);
-     query.bindValue(":PRENOM",prenom);
-     query.exec();
-     model->setQuery(query);
+     model->setQuery("SELECT * FROM employe WHERE CIN LIKE '"+recherche+"%' OR nom LIKE '"+recherche+"%' OR prenom LIKE '"+recherche+"%'");
      model->setHeaderData(0, Qt::Horizontal, QObject::tr("CIN"));
      model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
      model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
@@ -179,13 +173,25 @@ return model;
 /***********************************************************************************************/
 
 
-//Trie Par CIN
-QSqlQueryModel * Employe::trierEmployeParCIN()
+//Trie Par CIN montant
+QSqlQueryModel * Employe::trierEmployeParCIN_M()
 {
 
     QSqlQuery * q = new  QSqlQuery ();
            QSqlQueryModel * model = new  QSqlQueryModel ();
            q->prepare("SELECT * FROM EMPLOYE order by CIN ASC");
+           q->exec();
+           model->setQuery(*q);
+           return model;
+}
+
+//Trie Par CIN descendent
+QSqlQueryModel * Employe::trierEmployeParCIN_D()
+{
+
+    QSqlQuery * q = new  QSqlQuery ();
+           QSqlQueryModel * model = new  QSqlQueryModel ();
+           q->prepare("SELECT * FROM EMPLOYE order by CIN DESC");
            q->exec();
            model->setQuery(*q);
            return model;
@@ -204,7 +210,7 @@ QSqlQueryModel * Employe::trierEmployeParNom()
 }
 
 
-//Trie Par Prenom
+//Trie Par Date Naissance
 QSqlQueryModel * Employe::trierEmployeParDate()
 {
 

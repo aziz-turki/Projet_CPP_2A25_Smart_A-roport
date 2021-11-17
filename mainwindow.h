@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include "employes.h"
 
+#include "smtp.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -26,13 +28,9 @@ private slots:
 
     void on_pushButton_MIseAJour_clicked();
 
-    void on_pushButton_Recherche_clicked();
-
-    //void on_pushButton_Trier_clicked();
+    void on_lineEdit_recherche_textChanged();
 
     void on_pushButton_PDF_clicked();
-
-    //QModelIndex on_table_employe_activated(QModelIndex &index);
 
     void on_pushButton_Reset_clicked();
 
@@ -40,8 +38,14 @@ private slots:
 
     void on_comboBox_tri_activated();
 
+    //**********************************
+    void browse();
+    void sendMail();
+    void mailSent(QString status);
+
 private:
     Ui::MainWindow *ui;
+    QStringList files;
     Employe E;
 };
 #endif // MAINWINDOW_H
