@@ -17,14 +17,14 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>160</x>
       <y>150</y>
       <width>791</width>
       <height>331</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -186,11 +186,67 @@
        </rect>
       </property>
      </widget>
+     <widget class="QPushButton" name="pb_exe">
+      <property name="geometry">
+       <rect>
+        <x>630</x>
+        <y>210</y>
+        <width>131</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Generer Fichier EXE</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Fichier">
+      <property name="geometry">
+       <rect>
+        <x>630</x>
+        <y>170</y>
+        <width>141</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Generer Fichier Excell</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBoxA">
+      <property name="geometry">
+       <rect>
+        <x>620</x>
+        <y>60</y>
+        <width>151</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>Types de tri</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Tri par dimension</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Tri par numéro</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Tri par nom</string>
+       </property>
+      </item>
+     </widget>
      <widget class="QPushButton" name="pbafficher">
       <property name="geometry">
        <rect>
-        <x>520</x>
-        <y>0</y>
+        <x>640</x>
+        <y>20</y>
         <width>93</width>
         <height>28</height>
        </rect>
@@ -248,7 +304,7 @@
      <widget class="QLineEdit" name="lenouv_num">
       <property name="geometry">
        <rect>
-        <x>170</x>
+        <x>190</x>
         <y>50</y>
         <width>113</width>
         <height>22</height>
@@ -258,7 +314,7 @@
      <widget class="QLineEdit" name="lenouv_nom">
       <property name="geometry">
        <rect>
-        <x>180</x>
+        <x>190</x>
         <y>100</y>
         <width>113</width>
         <height>22</height>
@@ -268,7 +324,7 @@
      <widget class="QLabel" name="num_3">
       <property name="geometry">
        <rect>
-        <x>90</x>
+        <x>50</x>
         <y>50</y>
         <width>131</width>
         <height>20</height>
@@ -281,7 +337,7 @@
      <widget class="QLabel" name="nouvnom">
       <property name="geometry">
        <rect>
-        <x>70</x>
+        <x>50</x>
         <y>100</y>
         <width>151</width>
         <height>20</height>
@@ -307,7 +363,7 @@
      <widget class="QLineEdit" name="lanouv_dim">
       <property name="geometry">
        <rect>
-        <x>180</x>
+        <x>190</x>
         <y>150</y>
         <width>113</width>
         <height>22</height>
@@ -337,7 +393,7 @@
      <widget class="QLabel" name="nouvdim">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>50</x>
         <y>150</y>
         <width>131</width>
         <height>20</height>
@@ -371,6 +427,44 @@
       </property>
       <property name="text">
        <string>nouvelle date de liberation</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="widget">
+     <attribute name="title">
+      <string>Recherche</string>
+     </attribute>
+     <widget class="QLabel" name="label_rech">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>81</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Recherche</string>
+      </property>
+     </widget>
+     <widget class="QTableView" name="tab_rech">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>0</y>
+        <width>601</width>
+        <height>301</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="recherche">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>30</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
       </property>
      </widget>
     </widget>

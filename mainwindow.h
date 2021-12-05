@@ -22,7 +22,6 @@ private slots:
 
     void on_pbsupp_clicked();
 
-   // void on_pbmodifier_clicked();
 
 
 
@@ -30,9 +29,27 @@ private slots:
 
     void on_pb_miseajour_clicked();
 
+
+
+
+    void on_Fichier_clicked();
+
+
+
+
+    void on_recherche_textEdited();
+
+
+    //void on_pb_exe_clicked();
+
+
+
+    void on_comboBoxA_activated();
+
+
 private:
     Ui::MainWindow *ui;
-    Emplacement E;
+    Emplacement E,E1,E2;
 };
 
 #endif // MAINWINDOW_H

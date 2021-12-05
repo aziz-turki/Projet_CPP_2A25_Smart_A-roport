@@ -21,6 +21,11 @@ public:
    QSqlQueryModel* afficher();
    bool supprimer(int);
    bool modifier(int,QString,int ,QString,QString);
+   QSqlQueryModel *  chercheEmplacement(QString);
+   QSqlQueryModel * triEmplacementParDimension();
+   QSqlQueryModel * triEmplacementParNom();
+   QSqlQueryModel * triEmplacementParNum();
+
     private:
 
         int num,dimension;

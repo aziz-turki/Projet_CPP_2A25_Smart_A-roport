@@ -67,12 +67,22 @@ QSqlQueryModel* Emplacement::afficher()
     QSqlQueryModel* model=new QSqlQueryModel();
 
     model->setQuery("SELECT * FROM emplacement ");
-   model->setHeaderData(0, Qt::Horizontal, QObject::tr("Num"));
+  model->setHeaderData(0, Qt::Horizontal, QObject::tr("Num"));
    model->setHeaderData(1, Qt::Horizontal, QObject::tr("Nom"));
     model->setHeaderData(2, Qt::Horizontal, QObject::tr("dimension"));
-    model->setHeaderData(2, Qt::Horizontal, QObject::tr("reservation"));
-    model->setHeaderData(2, Qt::Horizontal, QObject::tr("liberation"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("reservation"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("liberation"));
     return model;
+
+   /* std::ofstream myfile;
+          myfile.open ("example.csv");
+          myfile << "This is the first cell in the first column.\n";
+          myfile << "a,b,c,\n";
+          myfile << "c,s,v,\n";
+          myfile << "1,2,3.456\n";
+          myfile << "semi;colon";
+          myfile.close();*/
+
 }
 bool Emplacement::modifier(int num,QString nom,int dimension,QString reservation,QString liberation)
 {
@@ -87,6 +97,64 @@ bool Emplacement::modifier(int num,QString nom,int dimension,QString reservation
     return query.exec();
 
 }
+
+QSqlQueryModel* Emplacement::chercheEmplacement(QString recherche)
+{QSqlQueryModel*model=new QSqlQueryModel();
+    QSqlQuery query;
+    query.prepare("Select*from Emplacement where num LIKE '"+recherche+"%' or nom LIKE '"+recherche+"%' or dimension LIKE '"+recherche+"%'" );
+    query.bindValue(":recherche",num);
+    query.bindValue(":recherche",nom);
+    query.bindValue(":recherche",dimension);
+
+
+    query.exec();
+    model->setQuery(query);
+    model->setHeaderData(0,Qt::Horizontal,QObject::tr("Num"));
+    model->setHeaderData(1,Qt::Horizontal,QObject::tr("Nom"));
+     model->setHeaderData(2,Qt::Horizontal,QObject::tr("Dimension"));
+     model->setHeaderData(3,Qt::Horizontal,QObject::tr("Reservation"));
+     model->setHeaderData(4,Qt::Horizontal,QObject::tr("liberation"));
+    return model;
+
+
+}
+QSqlQueryModel * Emplacement::triEmplacementParDimension()
+{
+
+    QSqlQuery  q ;
+           QSqlQueryModel * model = new  QSqlQueryModel ();
+           q.prepare("SELECT * FROM Emplacement order by dimension DESC");
+           q.exec();
+           model->setQuery(q);
+           return model;
+}
+
+
+QSqlQueryModel * Emplacement::triEmplacementParNom()
+{
+
+    QSqlQuery  q ;
+           QSqlQueryModel * model = new  QSqlQueryModel ();
+           q.prepare("SELECT * FROM Emplacement order by nom ASC");
+           q.exec();
+           model->setQuery(q);
+           return model;
+}
+QSqlQueryModel * Emplacement::triEmplacementParNum()
+{
+
+    QSqlQuery  q ;
+           QSqlQueryModel * model = new  QSqlQueryModel ();
+           q.prepare("SELECT * FROM Emplacement order by num ASC");
+           q.exec();
+           model->setQuery(q);
+           return model;
+}
+
+
+
+
+
 
 
 
