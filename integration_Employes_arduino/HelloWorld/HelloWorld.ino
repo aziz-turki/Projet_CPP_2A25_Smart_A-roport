@@ -24,11 +24,18 @@ if (Serial.available()){
   if(data=='1')
   {
     lcd.init();
-  lcd.print("BIENVENUE");
+    lcd.print("    Welcome");  
+    delay(1000);
+    lcd.init();
+
   }else if(data=='0')
   {
     lcd.init();
-    lcd.print("ERREUR !!!!!");
+    lcd.print("   Error!!!!");
+    lcd.setCursor(0,1);
+    lcd.print("   Try Again ");
+    delay(1000);
+    lcd.init();
   }
 }
 }

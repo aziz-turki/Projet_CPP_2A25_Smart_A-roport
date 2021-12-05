@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->stackedWidget_integration->setCurrentIndex(0);
 
 ////////////////Employe
-    QPixmap pic("C:/Users/21698/Desktop/photo_Employe_Qt");
+    QPixmap pic("C:/Users/21698/Desktop/employe/photo_Employe_Qt");
     ui->label_photo->setPixmap(pic);
     ui->label_photo2->setPixmap(pic);
     ui->lineEdit_CIN->setValidator(new QIntValidator(0, 99999999, this));
@@ -37,7 +37,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 ////////////////Avion
-    QPixmap pic_avion("C:/Users/21698/Desktop/photo_Avion_Qt");
+    QPixmap pic_avion("C:/Users/21698/Desktop/employe/photo_Avion_Qt");
     ui->label_photo_avion->setPixmap(pic_avion);
     ui->lineEdit_codeavion->setValidator(new QIntValidator(0, 99999999, this));
     ui->lineEdit_departavion->setMaxLength(8);
@@ -58,7 +58,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 //////////////////////////
-    QPixmap pic3("C:/Users/21698/Desktop/photo_pagecommande_Qt");
+    QPixmap pic3("C:/Users/21698/Desktop/employe/photo_pagecommande_Qt");
     ui->label_photo_pagecommande->setPixmap(pic3);
 
 
