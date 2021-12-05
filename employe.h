@@ -1,33 +1,53 @@
-#ifndef EMPLOY_H
-#define EMPLOY_H
-#include <iostream>
-#include <string>
+#ifndef EMPLOYES_H
+#define EMPLOYES_H
+#include <QString>
+#include <QSqlQueryModel>
+#include <QDate>
+//CRUDS
+class Employe
 
-using namespace std;
+{
+public:
+    Employe();
+    Employe(int,QString,QString,QString,QDate,int,QString,QString);
+    int getCIN();
+    QString getnom();
+    QString getprenom();
+    QString getsexe();
+    QDate getdate_naissance();
+    int getnum_tel();
+    QString getemail();
+    QString getadress();
 
-class EMPLOYE{
 
-    private:
-        int CIN;
-        string nom;
-        string prenom;
-        int Date_naiss;
-        string sexe;
-        int num_tel;
-        string email;
-        string adress;
 
-    public:
-        int getCINEmp()const{return CIN;}
-        string getNomEmp()const{return nom;}
-        string getPrenomEmp()const{return prenom;}
-        void ajouteremploye();
-        void supprimeremploye();
-        void modifieremploye();
-        void chercheremploye();
+    void setCIN(int);
+    void setnom(QString);
+    void setprenom(QString);
+    void setsexe(QString);
+    void setdate_naissance(QDate);
+    void setnum_tel(int);
+    void setemail(QString);
+    void setadress(QString);
 
+
+    bool ajouterEmploye();
+    QSqlQueryModel* afficherEmploye();
+    bool supprimerEmploye(int);
+    bool supprimerTout();
+    bool modifierEmploye(int,QString,QString,QString,QDate,int,QString,QString);
+    QSqlQueryModel* RechercheEmploye(QString);
+    QSqlQueryModel * trierEmployeParCIN_M();
+    QSqlQueryModel * trierEmployeParCIN_D();
+    QSqlQueryModel * trierEmployeParNom();
+    QSqlQueryModel * trierEmployeParDate();
+    void CREATION_PDF_Employe();
+
+
+private:
+    int CIN,num_tel;
+    QString nom,prenom,sexe,email,adress;
+    QDate date_naissance;
 };
 
-
-
-#endif // EMPLOY_H
+#endif // EMPLOYES_H
